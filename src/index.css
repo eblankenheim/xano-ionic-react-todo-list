@@ -1,3 +1,10 @@
+ion-input.custom-contrast {
+  --background: #f4f4f4;
+  --box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  --border-radius: 8px;
+  --padding-start: 12px;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

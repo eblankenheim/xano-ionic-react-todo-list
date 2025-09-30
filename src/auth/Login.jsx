@@ -7,6 +7,9 @@ import {
   IonItem,
   IonLabel,
   IonText,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
 import { useHistory } from "react-router-dom";
 import { login } from "../api/xano";
@@ -31,22 +34,29 @@ export default function Login() {
 
   return (
     <IonPage>
-      <IonContent>
+      <IonHeader>
+        <IonToolbar color={"primary"}>
+          <IonTitle>Login</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className="ion-padding">
         <form onSubmit={handleSubmit}>
           <IonItem>
             <IonLabel position="stacked">Email</IonLabel>
             <IonInput
+              className="custom-contrast ion-margin-top"
               value={email}
-              onIonChange={(e) => setEmail(e.detail.value)}
+              onIonInput={(e) => setEmail(e.target.value)}
               required
             />
           </IonItem>
           <IonItem>
             <IonLabel position="stacked">Password</IonLabel>
             <IonInput
+              className="ion-margin-bottom custom-contrast ion-margin-top"
               type="password"
               value={password}
-              onIonChange={(e) => setPassword(e.detail.value)}
+              onIonInput={(e) => setPassword(e.target.value)}
               required
             />
           </IonItem>
@@ -55,7 +65,7 @@ export default function Login() {
               <p>{error}</p>
             </IonText>
           )}
-          <IonButton expand="block" type="submit">
+          <IonButton className="ion-margin-top" expand="block" type="submit">
             Login
           </IonButton>
         </form>

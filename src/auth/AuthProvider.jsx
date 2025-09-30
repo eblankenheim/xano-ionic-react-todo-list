@@ -4,6 +4,7 @@ import { AuthContext } from "./AuthContext";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -11,7 +12,10 @@ export function AuthProvider({ children }) {
       setAuthToken(token);
       getMe()
         .then((res) => setUser(res.data))
-        .catch(() => setUser(null));
+        .catch(() => setUser(null))
+        .finally(() => setAuthLoading(false));
+    } else {
+      setAuthLoading(false);
     }
   }, []);
 
@@ -29,7 +33,8 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, setUser, loginUser, logoutUser }}>
+    <AuthContext.Provider
+      value={{ user, setUser, loginUser, logoutUser, authLoading }}>
       {children}
     </AuthContext.Provider>
   );

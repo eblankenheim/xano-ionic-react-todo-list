@@ -1,0 +1,6 @@
+{
+  "appId": "com.xano.todos",
+  "appName": "Xano Todo App",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
